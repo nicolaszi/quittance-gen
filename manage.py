@@ -3,8 +3,7 @@ from datetime import datetime
 import json
 from flask import Flask, render_template
 from flask_script import Manager, Command
-from flask_weasyprint import HTML, render_pdf
-from weasyprint import HTML, CSS
+from flask_weasyprint import HTML, CSS, render_pdf
 
 app = Flask(__name__)
 # configure your app
@@ -12,7 +11,7 @@ app = Flask(__name__)
 manager = Manager(app)
 
 @manager.command
-def create_quittance(date):
+def create_quittance(date, date_paiement):
     "create pdf quittance"
     with open('data.json', 'r') as f:
         json_dict = json.load(f)
@@ -25,7 +24,7 @@ def create_quittance(date):
     today=datetime.now()
     today_str = today.strftime(format)
     for data in json_dict:
-        html = render_template('quittance.html', data=data, firstday=formatted_firstday, lastday=formatted_lastday, today=today_str)
+        html = render_template('quittance.html', data=data, firstday=formatted_firstday, lastday=formatted_lastday, today=today_str, paymentdate=date_paiement)
         pdf = render_pdf(HTML(string=html))
         HTML(string=html, base_url='.').write_pdf('quittance.pdf',  stylesheets=[CSS(filename='static/style.css')])
 

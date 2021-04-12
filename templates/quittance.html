@@ -20,16 +20,16 @@
             <th>Détail du réglement :</th>
         </tr>
         <tr>
-            <td>Loyer :</td>
-            <td>{{ data.loyer.ht }} €</td>
+            <td>Loyer</td>
+            <td>: {{ data.loyer.ht }} €</td>
         </tr>
         <tr>
-            <td>Provision pour charges :</td>
-            <td>{{ data.loyer.charge }} €</td>
+            <td>Provision pour charges</td>
+            <td>: {{ data.loyer.charge }} €</td>
         </tr>
     </table>
     <p><b>Total : {{ data.loyer.total }} €</b></p>
-    <p>Date du paiement : </p>
+    <p>Date du paiement : {{ paymentdate }}</p>
     <p>Fait à : Montreuil, le : {{ today }}</p>
     <img src="static/img.jpg" />
     <div class="footer">
