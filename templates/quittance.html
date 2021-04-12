@@ -1,8 +1,40 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Flask Tutorial</title>
-    </head>
-    <body>
-        <p>Hello</p>
-    </body>
-</html> 
+
+<body>
+    <div class="box">
+        <p>Bailleur</p>
+        <p>SCI VINICY</p>
+        <p>1670 route des Estrades</p>
+        <p>07150 Vallon Pont d'Arc</p>
+    </div>
+    <div class="box tenant">
+        <p>Locataire</p>
+        <p>{{ data.id.lastname }} {{ data.id.firstname }}</p>
+        <p>{{ data.adresse.numero }} {{ data.adresse.rue }}</p>
+        <p>{{ data.adresse.code_postal }} {{ data.adresse.ville }}</p>
+    </div>
+    <h1>Avis de quittance du {{ firstday }} au {{ lastday }}</h1>
+    <table class="detail">
+        <tr>
+            <th>Détail du réglement :</th>
+        </tr>
+        <tr>
+            <td>Loyer :</td>
+            <td>{{ data.loyer.ht }} €</td>
+        </tr>
+        <tr>
+            <td>Provision pour charges :</td>
+            <td>{{ data.loyer.charge }} €</td>
+        </tr>
+    </table>
+    <p><b>Total : {{ data.loyer.total }} €</b></p>
+    <p>Date du paiement : </p>
+    <p>Fait à : Montreuil, le : {{ today }}</p>
+    <img src="static/img.jpg" />
+    <div class="footer">
+        Cette quittance annule tous les reçus qui auraient pu être établis précédemment en cas de paiement partiel du montant du présent terme. Elle est à conserver pendant trois ans par le locataire (loi n° 89-462 du 6 juillet 1989: art. 7-1).
+    </div>
+</body>
+
+</html>
